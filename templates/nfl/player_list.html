@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Player List{% endblock title %}
+
+{% block content %}
+<h1>Player List</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Position</th>
+      <th>Team</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for player in object_list %}
+    <tr>
+      <td>{{ player.last_name }}</td>
+      <td>{{ player.first_name }}</td>
+      <td>{{ player.position }}</td>
+      <td>
+        <a href="{% url 'team-detail' player.team.pk %}">
+        {{ player.team }}
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

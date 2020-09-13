@@ -1,0 +1,56 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Team Detail{% endblock title %}
+
+
+
+{% block content %}
+<h1>{{ object.location }} {{object.nickname }}</h1>
+
+<table class='table'>
+  <tr>
+    <th>Location</th>
+    <td>{{ object.location }}</td>
+  </tr>
+  <tr>
+    <th>Nickname</th>
+    <td>{{ object.nickname }}</td>
+  </tr>
+  <tr>
+    <th>Conference</th>
+    <td>{{ object.conference }}</td>
+  </tr>
+  <tr>
+    <th>Division</th>
+    <td>{{ object.get_division_display }}</td>
+  </tr>
+</table>
+
+<h2>Players on the {{ object.location }} {{object.nickname}}</h2>
+
+<table class="table">
+  <thead>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Position</th>
+  </thead>
+  <tbody>
+    {% for player in object.player_set.all %}
+    <tr>
+      <td>{{ player.last_name }}</td>
+      <td>{{ player.first_name}}</td>
+      <td>{{ player.position }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan=3>No players for this team</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{% url 'team-list' %}">List of Teams</a>
+|
+<a href="{% url 'player-list' %}">List of Players</a>
+{% endblock content %}

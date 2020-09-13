@@ -5,7 +5,10 @@
 
 {% block content %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <img src="{% static 'images/logo.png' %}" class="img-fluid" alt="DjangoX logo"/>
-  <p class="lead">A Django starter project with batteries.</p>
+  <img src="{% static 'images/NFL_logo.jpg' %}" class="img-fluid" alt="NFL logo" width=50% />
+  <p class="lead">The National Football League</p>
+  <a href="{% url 'team-list' %}">List of Teams</a>
+  |
+  <a href="{% url 'player-list' %}">List of Players</a>
 </div>
 {% endblock content %}
